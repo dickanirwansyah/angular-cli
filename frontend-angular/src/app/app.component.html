@@ -1,0 +1,51 @@
+<router-outlet></router-outlet>
+<!--list products-->
+<div class="container">
+  <div class="row">
+    <div class="col-md-6" style="text-align:center;">
+      <h3 class="alert alert-info">{{title}}</h3>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+          <span class="btn btn-primary btn-xs" (click)="doPopUpModal()" >Add New Product</span>
+          <br/><br/>
+          <div class="table-responsive">
+              <table id="mytable" class="table table-striped">
+                  <thead>
+                    <th>ID</th>
+                    <th>NAME</th>
+                    <th>CATEGORY</th>
+                    <th>PRICE</th>
+                    <th>EDIT</th>
+                    <th>DELETE</th>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let product of productList">
+                      <td>{{product.id}}</td>
+                      <td>{{product.name}}</td>
+                      <td>{{product.category.name}}</td>
+                      <td>{{product.price}}</td>
+                      <td>
+                        <button class="btn btn-primary"
+                        (click)="doPopUpEdit(product.id)">Edit</button>
+                      </td>
+                      <td>
+                        <button class="btn btn-warning" 
+                        (click)="doPopUpDelete(product.id, product.name, product.category.name, product.price)">Delete</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <th>ID</th>
+                    <th>NAME</th>
+                    <th>CATEGORY</th>
+                    <th>PRICE</th>
+                    <th>EDIT</th>
+                    <th>DELETE</th>
+                  </tfoot>
+              </table>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
